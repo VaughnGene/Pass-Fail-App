@@ -1,115 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Repetition Practice App</title>
     <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
-        button {
-            font-size: 16px;
-            padding: 10px;
-            margin: 5px;
-        }
-        #count {
-            font-size: 24px;
-            margin-top: 20px;
-        }
-        #directions {
-            font-size: 14px;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Repetition Practice App</h1>
+      <h1 class="mb-4">Repetition Practice App</h1>
 
-        <button id="successButton" class="btn btn-success">Successful Take</button>
-        <button id="resetButton" class="btn btn-danger">Reset Count</button>
+      <button id="successButton" class="btn btn-success">
+        Successful Take
+      </button>
+      <button id="resetButton" class="btn btn-danger">Reset Count</button>
 
-        <div id="count" class="mt-3">Success Count: 0</div>
+      <div id="count" class="mt-3">Success Count: 0</div>
 
-        <div id="directions" class="mt-3">
-            <p>Use the "Successful Take" button or press the space bar to increment the success count.</p>
-            <p>Click the "Reset Count" button, press Enter, or refresh the page to reset the count.</p>
-        </div>
+      <div id="directions" class="mt-3">
+        <p>
+          Use the "Successful Take" button or press the space bar to increment
+          the success count.
+        </p>
+        <p>
+          Click the "Reset Count" button, press Enter, or refresh the page to
+          reset the count.
+        </p>
+      </div>
 
-        <!-- Audio elements for Bing sound, Celebration sound, and New Record sound -->
-        <audio id="bingSound" src="bing.mp3"></audio>
-        <audio id="celebrationSound" src="CongratulationsMelee.wav"></audio>
-        <audio id="newRecordSound" src="aNewRecordMelee.wav"></audio>
+      <!-- Audio elements for Bing sound, Celebration sound, and New Record sound -->
+      <audio id="bingSound" src="bing.mp3"></audio>
+      <audio id="celebrationSound" src="CongratulationsMelee.wav"></audio>
+      <audio id="newRecordSound" src="aNewRecordMelee.wav"></audio>
     </div>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 
-    <script>
-        let successCount = 0;
-        const bingSound = document.getElementById('bingSound');
-        const celebrationSound = document.getElementById('celebrationSound');
-        const newRecordSound = document.getElementById('newRecordSound');
-
-        // Add event listener to keep the document focused
-        document.addEventListener('click', function() {
-            document.getElementById('successButton').focus();
-        });
-
-        document.getElementById('successButton').addEventListener('click', function() {
-            successCount++;
-            updateCountDisplay();
-            playBingSound();
-
-            if (successCount === 10) {
-                playCelebrationSound();
-            }
-
-            if (successCount === 20) {
-                playNewRecordSound();
-            }
-        });
-
-        document.getElementById('resetButton').addEventListener('click', function() {
-            successCount = 0;
-            updateCountDisplay();
-        });
-
-        document.addEventListener('keydown', function(event) {
-            if (event.code === 'Enter') {
-                // Prevent default action (which might include triggering a click event)
-                event.preventDefault();
-                // Reset count on Enter key press
-                successCount = 0;
-                updateCountDisplay();
-            }
-        });
-
-        function updateCountDisplay() {
-            document.getElementById('count').innerText = 'Success Count: ' + successCount;
-        }
-
-        function playBingSound() {
-            bingSound.currentTime = 0;
-            bingSound.play();
-        }
-
-        function playCelebrationSound() {
-            celebrationSound.currentTime = 0;
-            celebrationSound.play();
-        }
-
-        function playNewRecordSound() {
-            newRecordSound.currentTime = 0;
-            newRecordSound.play();
-        }
-    </script>
-</body>
+  </body>
 </html>

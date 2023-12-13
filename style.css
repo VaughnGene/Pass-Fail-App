@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+button {
+  font-size: 16px;
+  padding: 10px;
+  margin: 5px;
+}
+#count {
+  font-size: 24px;
+  margin-top: 20px;
+}
+#directions {
+  font-size: 14px;
+  margin-top: 10px;
+}
