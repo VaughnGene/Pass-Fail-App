@@ -1,5 +1,6 @@
 let successCount = 0;
 const bingSound = document.getElementById("bingSound");
+const successMeleeSound = document.getElementById("successMeleeSound");
 const celebrationSound = document.getElementById("celebrationSound");
 const newRecordSound = document.getElementById("newRecordSound");
 
@@ -12,6 +13,10 @@ document.getElementById("successButton").addEventListener("click", function () {
   successCount++;
   updateCountDisplay();
   playBingSound();
+
+  if (successCount === 5) {
+    playSuccessMeleeSound();
+  }
 
   if (successCount === 10) {
     playCelebrationSound();
@@ -44,6 +49,11 @@ function updateCountDisplay() {
 function playBingSound() {
   bingSound.currentTime = 0;
   bingSound.play();
+}
+
+function playSuccessMeleeSound() {
+  successMeleeSound.currentTime = 0;
+  successMeleeSound.play();
 }
 
 function playCelebrationSound() {
